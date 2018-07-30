@@ -1,0 +1,30 @@
+###########################################################################
+# Docker Compose File
+###########################################################################
+#
+# Your Docker Compose file spins up your application's environment.
+# It defines all of the services, network links and volumes to
+# be used by your application. Modify this file as required.
+#
+version: '2'
+services:
+  web:
+    build: .
+    volumes:
+      - ./:/app
+    ports:
+      - "8081:80"
+#      - "443:443"
+    
+  mysql:
+    image: mariadb
+    volumes:
+      - ./storage/data/mysql:/var/lib/mysql
+    ports:
+      - "3308:3306"
+    environment: 
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    

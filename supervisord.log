@@ -1,0 +1,7 @@
+2018-07-30 07:39:34,771 CRIT Supervisor running as root (no user in config file)
+2018-07-30 07:39:34,772 WARN No file matches via include "/etc/supervisor.d/*.conf"
+2018-07-30 07:39:34,783 INFO supervisord started with pid 11
+2018-07-30 07:39:35,789 INFO spawned: 'nginx' with pid 14
+2018-07-30 07:39:35,799 INFO spawned: 'php-fpm' with pid 15
+2018-07-30 07:39:37,015 INFO success: nginx entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2018-07-30 07:39:37,016 INFO success: php-fpm entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
