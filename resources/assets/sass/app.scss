@@ -12,3 +12,59 @@
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
+
+.socialite-card {
+  background-color: #f4f4f4;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  border: 1px solid #d5d5d5;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  height: 100px;
+  text-indent: -9999px;
+  width: 140px;
+
+  &:hover,&.selected {
+    border: 1px solid #83bd31;
+    background-color: #fff;
+    -webkit-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+
+  &.selected {
+    position: relative;
+    background-position: top 20px center;
+
+    &:after {
+      font-family: FontAwesome;
+      content: "\f058";
+      position: absolute;
+      color: #83bd31;
+      bottom: 10px;
+      width: 20px;
+      text-align: center;
+      left: -10px;
+      margin-left: 50%;
+      font-size: 1.5em;
+      text-indent: 0;
+    }
+  }
+
+
+
+  &.shopify {
+    background-image: url(/img/shopify.png);
+  }
+
+  &.woocommerce {
+    background-image: url(/img/woocommerce.png);
+  }
+
+  &.bigcommerce {
+    background-image: url(/img/bigcommerce.png);
+  }
+
+}
