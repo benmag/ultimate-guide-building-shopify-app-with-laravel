@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Authl
+use App\User;
+use Auth;
 use Socialite;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -44,17 +44,19 @@ class LoginShopifyController extends Controller
      */
     public function handleProviderCallback()
     {
-        $user = Socialite::driver('shopify')->user();
 
-        /*
-            This is where it can get tricky. You need to add a logic where you check if user
-            is already registered using regular email. In that case just add his social details
-            and let him login, otherwise add new entry in the social table. This way user account
-            won't be duplicated if his social account email and regular account email is same.
-        */
+        $shopifyUser = Socialite::driver('shopify')->user();
 
-        // $authUser = $this->findOrCreateUser($user, $provider);
-        // Auth::login($user, true);
+        // Create user
+        $user = User::firstOrCreate([
+            'name' => $shopifyUser->name,
+            'email' => $shopifyUser->email,
+            'password' => '',
+        ]);
+
+        // Attach shop
+
+        Auth::login($user, true);
 
         return redirect('/home');
 
