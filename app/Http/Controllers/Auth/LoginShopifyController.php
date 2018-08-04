@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Shop;
 use App\User;
+use App\UserProvider;
 use Auth;
 use Socialite;
 use Illuminate\Http\Request;
@@ -54,7 +56,22 @@ class LoginShopifyController extends Controller
             'password' => '',
         ]);
 
-        // Attach shop
+        // Store the OAuth Identity
+        UserProvider::firstOrCreate([
+            'user_id' => $user->id,
+            'provider' => 'shopify',
+            'provider_user_id' => $shopifyUser->id,
+            'provider_token' => $shopifyUser->token,
+        ]);
+
+        // Create shop
+        $shop = Shop::firstOrCreate([
+            'name' => $shopifyUser->name,
+            'domain' => $shopifyUser->nickname,
+        ]);
+
+        // Attach shop to user
+        $shop->user()->associate($user);
 
         Auth::login($user, true);
 
