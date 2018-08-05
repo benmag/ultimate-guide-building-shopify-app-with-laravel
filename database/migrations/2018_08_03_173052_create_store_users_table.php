@@ -27,6 +27,6 @@ class CreateStoreUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('store_users');
+        Schema::dropIfExists('store_users');
     }
 }
