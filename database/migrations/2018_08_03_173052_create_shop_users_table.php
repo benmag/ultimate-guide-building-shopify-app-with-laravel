@@ -13,7 +13,7 @@ class CreateShopUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('shop_users', function (Blueprint $table) {
+        Schema::create('shop_users', function (Blueprint $table) {
             $table->integer('shop_id');
             $table->integer('user_id');
             $table->unique(['shop_id', 'user_id']);

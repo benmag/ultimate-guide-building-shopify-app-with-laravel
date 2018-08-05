@@ -13,7 +13,7 @@ class UserProvider extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'provider', 'provider_user_id', 'access_token',
+        'user_id', 'provider', 'provider_user_id', 'provider_token',
     ];
 
 }

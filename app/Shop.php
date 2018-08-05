@@ -16,4 +16,14 @@ class Shop extends Model
         'name', 'domain'
     ];
 
+    /**
+     * Get all of the users that belong to the shop.
+     */
+    public function users()
+    {
+        return $this->belongsToMany(
+            'App\User', 'shop_users', 'shop_id', 'user_id'
+        );
+    }
+
 }

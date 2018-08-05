@@ -13,12 +13,12 @@ class CreateUserProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::table('user_providers', function (Blueprint $table) {
+        Schema::create('user_providers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->string('provider');
             $table->string('provider_user_id');
-            $table->string('access_token');
+            $table->string('provider_token')->nullable();
             $table->timestamps();
         });
     }

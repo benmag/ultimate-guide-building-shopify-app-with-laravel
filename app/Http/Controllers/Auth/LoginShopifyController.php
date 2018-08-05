@@ -71,8 +71,9 @@ class LoginShopifyController extends Controller
         ]);
 
         // Attach shop to user
-        $shop->user()->associate($user);
+        $shop->users()->syncWithoutDetaching([$user->id]);
 
+        // Login with Laravel's Authentication system
         Auth::login($user, true);
 
         return redirect('/home');
