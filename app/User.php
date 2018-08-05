@@ -28,12 +28,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the shops for the user
+     * Get the stores for the user
      */
-    public function shops()
+    public function stores()
     {
         return $this->belongsToMany(
-            'App\Shop', 'shop_users', 'shop_id', 'user_id'
+            'App\Store', 'store_users', 'store_id', 'user_id'
         );
     }
 

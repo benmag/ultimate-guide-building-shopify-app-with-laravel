@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Shop;
-use App\User;
-use App\UserProvider;
 use Auth;
+use App\User;
 use Socialite;
+use App\Store;
+use App\UserProvider;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -65,13 +65,13 @@ class LoginShopifyController extends Controller
         ]);
 
         // Create shop
-        $shop = Shop::firstOrCreate([
+        $store = Store::firstOrCreate([
             'name' => $shopifyUser->name,
             'domain' => $shopifyUser->nickname,
         ]);
 
-        // Attach shop to user
-        $shop->users()->syncWithoutDetaching([$user->id]);
+        // Attach store to user
+        $store->users()->syncWithoutDetaching([$user->id]);
 
         // Login with Laravel's Authentication system
         Auth::login($user, true);
