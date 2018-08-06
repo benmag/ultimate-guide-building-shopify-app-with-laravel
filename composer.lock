@@ -4,9 +4,66 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ba3ae9aae8753342d6ee4ade9e609cd3",
-    "content-hash": "5838617498bced8a00b31eec9f7a0a35",
+    "hash": "07d085c9a4ff738553dbf2100ed1edd8",
+    "content-hash": "7b131e5213da8085cf450a58e4e2cf49",
     "packages": [
+        {
+            "name": "bnmetrics/laravel-shopify-api",
+            "version": "1.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/BNMetrics/Laravel-ShopifyAPI.git",
+                "reference": "e3f2e088670c43d871e3b909cc2b205a736d3e21"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/BNMetrics/Laravel-ShopifyAPI/zipball/e3f2e088670c43d871e3b909cc2b205a736d3e21",
+                "reference": "e3f2e088670c43d871e3b909cc2b205a736d3e21",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "~6.0",
+                "illuminate/support": "~5.4",
+                "laravel/socialite": "~3.0",
+                "php": ">=5.6.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9",
+                "phpunit/phpunit": "~4.0|~5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "BNMetrics\\Shopify\\ShopifyServiceProvider"
+                    ],
+                    "aliases": {
+                        "Shopify": "BNMetrics\\Shopify\\Facade\\ShopifyFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "BNMetrics\\Shopify\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luna Chen",
+                    "email": "luna@bonnenuitmetrics.com"
+                }
+            ],
+            "description": "Shopify API wrapper for laravel",
+            "keywords": [
+                "laravel",
+                "shopify"
+            ],
+            "time": "2018-03-19 17:22:58"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",

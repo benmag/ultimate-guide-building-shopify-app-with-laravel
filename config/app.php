@@ -151,6 +151,8 @@ return [
          * Package Service Providers...
          */
         \SocialiteProviders\Manager\ServiceProvider::class,
+        \BNMetrics\Shopify\ShopifyServiceProvider::class,
+        \BNMetrics\Shopify\BillingServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -209,6 +211,9 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Shopify' => BNMetrics\Shopify\Facade\ShopifyFacade::class,
+        'ShopifyBilling' => BNMetrics\Shopify\Facade\BillingFacade::class,
 
     ],
 
