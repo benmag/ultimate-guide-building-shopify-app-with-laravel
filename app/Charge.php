@@ -24,6 +24,15 @@ class Charge extends Model
     protected $table = "store_charges";
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'store_id', 'name', 'shopify_charge_id', 'shopify_plan', 'quantity', 'charge_type', 'test'
+    ];
+
+    /**
      * The attributes that should be mutated to dates.
      *
      * @var array
