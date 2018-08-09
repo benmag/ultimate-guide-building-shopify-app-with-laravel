@@ -7,15 +7,18 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                <table class="table mb-0">
+                    <tbody>
+                    @foreach(auth()->user()->stores as $store)
+                    <tr>
+                        <td>{{ $store->name }}</td>
+                        <td>{{ $store->domain }}</td>
+                        <td><a href="stores/{{ $store->id }}">View Store</a></td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
 
-                    You are logged in!
-                </div>
             </div>
         </div>
     </div>
