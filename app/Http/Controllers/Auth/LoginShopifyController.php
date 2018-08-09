@@ -73,8 +73,12 @@ class LoginShopifyController extends Controller
         // Attach store to user
         $store->users()->syncWithoutDetaching([$user->id]);
 
+
         // Login with Laravel's Authentication system
         Auth::login($user, true);
+
+        // Setup uninstall webhook
+        dispatch(new \App\Jobs\RegisterUninstallShopifyWebhook($store->domain, $shopifyUser->token, $store));
 
         return redirect('/home');
 
