@@ -19,34 +19,34 @@ class VerifyStoreIsSubscribed
     public function handle($request, $next, $subscription = 'default', $plan = null)
     {
 
-    $store = Store::find(1);
+        $store = Store::find($request->route()->parameter('storeId'));
 
-    if ($this->subscribed($store, $subscription, $plan, func_num_args() === 2)) {
-        return $next($request);
-    }
+        if ($this->subscribed($store, $subscription, $plan, func_num_args() === 2)) {
+            return $next($request);
+        }
 
-    if($request->ajax() || $request->wantsJson()) {
-        response('Subscription Required.', 402);
-    }
+        if($request->ajax() || $request->wantsJson()) {
+            response('Subscription Required.', 402);
+        }
 
-    $user = auth()->user()->providers->where('provider', 'shopify')->first();
-    $shopify = \Shopify::retrieve($store->domain, $user->provider_token);
+        $user = auth()->user()->providers->where('provider', 'shopify')->first();
+        $shopify = \Shopify::retrieve($store->domain, $user->provider_token);
 
-    $options = [
-        'name' => 'starter plan',
-        'price' => '10',
-        'trial_days' => 7,
-        'return_url' => route('shopify.subscribe'),
-    ];
+        $options = [
+            'name' => 'starter plan',
+            'price' => '10',
+            'trial_days' => 30,
+            'return_url' => route('shopify.subscribe', ['storeId' => $store->id]),
+        ];
 
-    if(\App::environment('local')) {
-        $options['test'] = true;
-    }
+        if(\App::environment('local')) {
+            $options['test'] = true;
+        }
 
-    return \ShopifyBilling::driver('RecurringBilling')
-        ->create($shopify, $options)
-        ->redirect()
-        ->with('user', $user);
+        return \ShopifyBilling::driver('RecurringBilling')
+            ->create($shopify, $options)
+            ->redirect()
+            ->with('user', $user);
 
     }
 
