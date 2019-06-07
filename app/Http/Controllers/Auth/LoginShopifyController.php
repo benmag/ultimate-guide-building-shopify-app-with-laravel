@@ -51,7 +51,7 @@ class LoginShopifyController extends Controller
 
         // Create user
         $user = User::firstOrCreate([
-            'name' => $shopifyUser->name,
+            'name' => $shopifyUser->nickname,
             'email' => $shopifyUser->email,
             'password' => '',
         ]);
