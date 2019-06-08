@@ -8,7 +8,10 @@
     {
       "name": "web",
       "image": "${app}",
-      "ports": ["80:80"]
+      "ports": ["80:80"],
+      "environment": {
+        "APP_KEY": "base64:SXbQvysCa/Ymzb8lxubsOKWzYAqwLj3/dCdcr1J+5PU="
+      }
     }
   ]
 }
