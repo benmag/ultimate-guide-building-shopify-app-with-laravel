@@ -7,7 +7,7 @@
   "services": [
     {
       "name": "web",
-      "image": "${app}/${branch}:${commit}",
+      "image": "${app}",
       "ports": ["80:80"]
     }
   ]
